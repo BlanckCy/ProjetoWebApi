@@ -1,10 +1,10 @@
-package projeto.ecommerce.Cesta;
+package projeto.ecommerce.Carrinho;
 
-public class Cesta {
+public class Carrinho {
     private int idcarrinho;
     private int idproduto;
     private int qtd;
-    private float valorProduto;
+    private float valorTotal;
 
     public int getIdcarrinho() {
         return idcarrinho;
@@ -24,10 +24,10 @@ public class Cesta {
     public void setQtd(int qtd) {
         this.qtd = qtd;
     }
-    public float getValorProduto() {
-        return valorProduto;
+    public float getValorTotal() {
+        return valorTotal;
     }
-    public void setValorProduto(float valorProduto) {
-        this.valorProduto = valorProduto;
-    }    
+    public void setValorTotal(float valorTotal) {
+        this.valorTotal = valorTotal;
+    }   
 }

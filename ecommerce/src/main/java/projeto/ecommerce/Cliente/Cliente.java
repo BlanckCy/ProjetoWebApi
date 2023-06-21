@@ -1,7 +1,7 @@
 package projeto.ecommerce.Cliente;
 
-public class ClienteDTO {
-    private int codigo;
+public class Cliente {
+    private int idcliente;
     private String nome;
     private String email;
     private String senha;
@@ -12,12 +12,6 @@ public class ClienteDTO {
     public void setSenha(String senha) {
         this.senha = senha;
     }    
-    public int getCodigo() {
-        return codigo;
-    }
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
     public String getNome() {
         return nome;
     }
@@ -29,5 +23,11 @@ public class ClienteDTO {
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+    public int getIdcliente() {
+        return idcliente;
+    }
+    public void setIdcliente(int idcliente) {
+        this.idcliente = idcliente;
     }    
 }

@@ -20,20 +20,20 @@ public class ClienteController {
     ClienteService service;
    
     @GetMapping("/api/cliente/{codigo}")
-    public ResponseEntity<ClienteDTO> carregar(@PathVariable int codigo){
-        ClienteDTO obj = service.carregar(codigo);
+    public ResponseEntity<Cliente> carregar(@PathVariable int codigo){
+        Cliente obj = service.carregar(codigo);
         return ResponseEntity.ok(obj);
     }
 
     @PostMapping("/api/cliente")
-    public ResponseEntity<String> gravar(@RequestBody ClienteDTO obj){
+    public ResponseEntity<String> gravar(@RequestBody Cliente obj){
         String mensagem = service.gravar(obj);
         return ResponseEntity.ok(mensagem); 
     }
     
     
     @PutMapping("/api/cliente")
-    public ResponseEntity<String> atualizar(@RequestBody ClienteDTO obj){
+    public ResponseEntity<String> atualizar(@RequestBody Cliente obj){
         String mensagem = service.gravar(obj);
         return ResponseEntity.ok(mensagem); 
     }
@@ -52,7 +52,7 @@ public class ClienteController {
 
 
     @PostMapping("/api/cliente/login")
-    public ResponseEntity<ClienteDTO> fazerLogin(@RequestBody ClienteDTO dto){
+    public ResponseEntity<Cliente> fazerLogin(@RequestBody Cliente dto){
         return ResponseEntity.ok(service.fazerLogin(dto));
     }
 
