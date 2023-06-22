@@ -10,50 +10,75 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import projeto.ecommerce.Entity.ClienteEntity;
 
 @RestController
+@RequestMapping("/api/cliente/")
 public class ClienteController {
     @Autowired
     ClienteService service;
    
-    @GetMapping("/api/cliente/{codigo}")
+    @GetMapping("loadinfo/{codigo}/")
     public ResponseEntity<Cliente> carregar(@PathVariable int codigo){
-        Cliente obj = service.carregar(codigo);
-        return ResponseEntity.ok(obj);
+        try{
+            Cliente obj = service.loadInfo(codigo);
+            return ResponseEntity.ok(obj);
+        }catch(Exception err){
+            return (ResponseEntity<Cliente>) ResponseEntity.internalServerError();
+        }
     }
 
-    @PostMapping("/api/cliente")
-    public ResponseEntity<String> gravar(@RequestBody Cliente obj){
-        String mensagem = service.gravar(obj);
-        return ResponseEntity.ok(mensagem); 
+    @PostMapping("insert/")
+    public ResponseEntity<String> insert(@RequestBody Cliente obj){
+        try{
+            String msg = service.insert(obj);
+            return ResponseEntity.ok(msg); 
+        }catch(Exception err){
+            return (ResponseEntity<String>) ResponseEntity.internalServerError();
+        }
     }
     
-    
-    @PutMapping("/api/cliente")
-    public ResponseEntity<String> atualizar(@RequestBody Cliente obj){
-        String mensagem = service.gravar(obj);
-        return ResponseEntity.ok(mensagem); 
+    @PutMapping("update/")
+    public ResponseEntity<String> update(@RequestBody Cliente obj){
+        try{
+            String msg = service.insert(obj);
+            return ResponseEntity.ok(msg); 
+        }catch(Exception err){
+            return (ResponseEntity<String>) ResponseEntity.internalServerError();
+        }
     }
 
-    @DeleteMapping("/api/cliente/{codigo}")
-    public ResponseEntity<String> remover(@PathVariable int codigo){
-        String menString = service.remover(codigo);
-        return ResponseEntity.ok(menString);
+    @DeleteMapping("delete/{codigo}")
+    public ResponseEntity<String> delete(@PathVariable int codigo){
+        try{    
+            String msg = service.delete(codigo);
+            return ResponseEntity.ok(msg);
+        }catch(Exception err){
+            return (ResponseEntity<String>) ResponseEntity.internalServerError();
+        }
     }
 
 
-    @GetMapping("/api/clientes")
+    @GetMapping("loadinfo/")
     public ResponseEntity<List<ClienteEntity>> listar(){
-        return ResponseEntity.ok(service.listar());
+        try{
+            return ResponseEntity.ok(service.listar());
+        }catch(Exception err){
+            return (ResponseEntity<List<ClienteEntity>>) ResponseEntity.internalServerError();
+        }
     }
 
 
-    @PostMapping("/api/cliente/login")
+    @PostMapping("login/")
     public ResponseEntity<Cliente> fazerLogin(@RequestBody Cliente dto){
-        return ResponseEntity.ok(service.fazerLogin(dto));
+        try{
+            return ResponseEntity.ok(service.fazerLogin(dto));
+        }catch(Exception err){
+            return (ResponseEntity<Cliente>) ResponseEntity.internalServerError();
+        }
     }
 
 }

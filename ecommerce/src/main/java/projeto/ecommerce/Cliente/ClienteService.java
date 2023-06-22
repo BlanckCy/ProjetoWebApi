@@ -13,21 +13,20 @@ import java.util.Optional;
 public class ClienteService {
     @Autowired
     private ClienteRepository repository;
+    private Cliente dto;
+    private ClienteEntity obj;
      
-     public String gravar(Cliente dto){
-        ClienteEntity entity = new ClienteEntity();
-        
-        entity.setIdcliente(dto.getIdcliente());
-        entity.setEmail(dto.getEmail());
-        entity.setNome(dto.getNome());
-        repository.save(entity);
+     public String insert(Cliente dto){        
+        obj.setIdcliente(dto.getIdcliente());
+        obj.setEmail(dto.getEmail());
+        obj.setNome(dto.getNome());
+        repository.save(obj);
 
         return "ok";
      }
 
-     public Cliente carregar(int codigo){
-        Cliente dto = new Cliente();
-        Optional<ClienteEntity> retorno = repository.findById(codigo);
+     public Cliente loadInfo(int idcliente){
+        Optional<ClienteEntity> retorno = repository.findById(idcliente);
         if(retorno.isPresent()){
             dto.setIdcliente(retorno.get().getIdcliente());
             dto.setNome(retorno.get().getNome());
@@ -36,9 +35,8 @@ public class ClienteService {
         return dto;        
      }
 
-    public String remover(int codigo) {
-        ClienteEntity obj = new ClienteEntity();
-        obj.setIdcliente(codigo);
+    public String delete(int idcliente) {
+        obj.setIdcliente(idcliente);
         repository.delete(obj);
         return "ok";
     }
@@ -48,7 +46,6 @@ public class ClienteService {
     }
 
     public Cliente fazerLogin(Cliente obj){
-        Cliente dto = new Cliente();
         Optional<ClienteEntity> retorno = repository.fazerLogin(obj.getEmail(), obj.getSenha());
         if(retorno.isPresent()){
             dto.setIdcliente(retorno.get().getIdcliente());
@@ -57,5 +54,4 @@ public class ClienteService {
         }
         return dto;    
     }
-
 }

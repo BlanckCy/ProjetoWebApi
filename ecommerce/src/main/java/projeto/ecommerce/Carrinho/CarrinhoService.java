@@ -13,20 +13,16 @@ public class CarrinhoService {
     @Autowired
     private CarrinhoRepository repository;
     private Carrinho dto;
+    private CarrinhoEntity obj;
 
     public String insert(Carrinho dto){
-        CarrinhoEntity entity = new CarrinhoEntity();
-
-        entity.setIdcarrinho(dto.getIdcarrinho());
-        entity.setIdproduto(dto.getIdproduto());
-        entity.setQtd(dto.getQtd());
-        entity.setValorTotal(dto.getValorTotal());
+        obj.setIdcarrinho(dto.getIdcarrinho());
+        obj.setIdproduto(dto.getIdproduto());
 
         return "ok";
     }
 
     public String delete(int idcarrinho){
-        CarrinhoEntity obj = new CarrinhoEntity();
         obj.setIdcarrinho(idcarrinho);
         repository.delete(obj);
 
@@ -38,8 +34,6 @@ public class CarrinhoService {
         if(retorno.isPresent()){
             dto.setIdcarrinho(retorno.get().getIdcarrinho());
             dto.setIdproduto(retorno.get().getIdproduto());
-            dto.setQtd(retorno.get().getQtd());
-            dto.setValorTotal(retorno.get().getValorTotal());
         }
 
         return dto;

@@ -1,7 +1,11 @@
 package projeto.ecommerce.Pedido;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,11 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class PedidoController {
     PedidoService service = new PedidoService();
 
-    @PostMapping("insert")
+    @PostMapping("insert/")
     public ResponseEntity<String>insert(@RequestBody Pedido obj){
         try{
-            String msg = "Produto "+ obj.getIdpedido() + " gravado com sucesso!";
-            service.insert();
+            String msg = service.insert(obj);
 
             return ResponseEntity.ok(msg);
         }catch(Exception err){
@@ -23,11 +26,10 @@ public class PedidoController {
         }
     }
 
-    @PostMapping("update")
+    @PutMapping("update/")
     public ResponseEntity<String>update(@RequestBody Pedido obj){
         try{
-            String msg = "Produto "+ obj.getIdpedido() + " atualizado com sucesso!";
-            service.update();
+            String msg = service.insert(obj);
 
             return ResponseEntity.ok(msg);
         }catch(Exception err){
@@ -35,11 +37,10 @@ public class PedidoController {
         }
     }
 
-    @PostMapping("delete")
-    public ResponseEntity<String>delete(@RequestBody Pedido obj){
+    @DeleteMapping("delete/{codigo}/")
+    public ResponseEntity<String>delete(@PathVariable int codigo){
         try{
-            String msg = "Produto "+ obj.getIdpedido() + " deletado com sucesso!";
-            service.delete();
+            String msg = service.delete(codigo);
 
             return ResponseEntity.ok(msg);
         }catch(Exception err){
@@ -47,11 +48,10 @@ public class PedidoController {
         }
     }
 
-    @PostMapping("loadinfo")
-    public ResponseEntity<Pedido>loadInfo(@RequestBody Pedido obj){
+    @GetMapping("loadinfo/{codigo}/")
+    public ResponseEntity<Pedido>loadInfo(@PathVariable int codigo){
         try{
-            obj.setIdpedido(0);
-            service.loadInfo();
+            Pedido obj = service.loadInfo(codigo);
 
             return ResponseEntity.ok(obj);
         }catch(Exception err){

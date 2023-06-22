@@ -1,11 +1,21 @@
-package projeto.ecommerce.Pedido;
+package projeto.ecommerce.Entity;
 
-public class Pedido {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "pedido")
+public class PedidoEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) 
     private int idpedido;
     private int idcliente;
     private int qtd;
     private float valorTotal;
-
+    
     public int getIdpedido() {
         return idpedido;
     }
@@ -29,5 +39,5 @@ public class Pedido {
     }
     public void setValorTotal(float valorTotal) {
         this.valorTotal = valorTotal;
-    }      
+    }
 }
