@@ -14,7 +14,7 @@ import projeto.ecommerce.Entity.ClienteEntity;
 public interface ClienteRepository extends JpaRepository<ClienteEntity, Integer>, 
 JpaSpecificationExecutor<ClienteEntity> {
     
-    @Query(value = "select * from cliente where email=?1 and senha=md5(?2) ", nativeQuery = true)
-    Optional<ClienteEntity> fazerLogin(String email, String senha);
+    @Query(value = "select * from cliente where email=?1 and senha=md5(?2)", nativeQuery = true)
+    Optional<ClienteEntity>fazerLogin(String email, String senha);
 
 }

@@ -15,7 +15,13 @@ public class ClienteEntity {
     private String nome;
     private String email;
     private String senha;
-
+    
+    public int getIdcliente() {
+        return idcliente;
+    }
+    public void setIdcliente(int idcliente) {
+        this.idcliente = idcliente;
+    }
     public String getNome() {
         return nome;
     }
@@ -34,10 +40,4 @@ public class ClienteEntity {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    public int getIdcliente() {
-        return idcliente;
-    }
-    public void setIdcliente(int idcliente) {
-        this.idcliente = idcliente;
-    }    
 }

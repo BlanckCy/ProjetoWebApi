@@ -13,10 +13,9 @@ import java.util.Optional;
 public class ClienteService {
     @Autowired
     private ClienteRepository repository;
-    private Cliente dto;
-    private ClienteEntity obj;
      
-     public String insert(Cliente dto){        
+    public String insert(Cliente dto){        
+        ClienteEntity obj = new ClienteEntity();
         obj.setIdcliente(dto.getIdcliente());
         obj.setEmail(dto.getEmail());
         obj.setNome(dto.getNome());
@@ -27,17 +26,18 @@ public class ClienteService {
 
      public Cliente loadInfo(int idcliente){
         Optional<ClienteEntity> retorno = repository.findById(idcliente);
+        Cliente dto = new Cliente();
         if(retorno.isPresent()){
-            dto.setIdcliente(retorno.get().getIdcliente());
-            dto.setNome(retorno.get().getNome());
-            dto.setEmail(retorno.get().getEmail());
+            ClienteEntity clienteEntity = retorno.get();
+            dto.setIdcliente(clienteEntity.getIdcliente());
+            dto.setNome(clienteEntity.getNome());
+            dto.setEmail(clienteEntity.getEmail());
         }
         return dto;        
      }
 
     public String delete(int idcliente) {
-        obj.setIdcliente(idcliente);
-        repository.delete(obj);
+        repository.deleteById(idcliente);
         return "ok";
     }
 
@@ -45,13 +45,16 @@ public class ClienteService {
         return  repository.findAll();
     }
 
-    public Cliente fazerLogin(Cliente obj){
+    public Cliente fazerLogin(Cliente obj) {
         Optional<ClienteEntity> retorno = repository.fazerLogin(obj.getEmail(), obj.getSenha());
-        if(retorno.isPresent()){
-            dto.setIdcliente(retorno.get().getIdcliente());
-            dto.setNome(retorno.get().getNome());
-            dto.setEmail(retorno.get().getEmail());
+        if (retorno.isPresent()) {
+            ClienteEntity clienteEntity = retorno.get();
+            obj.setIdcliente(retorno.get().getIdcliente());
+            obj.setNome(retorno.get().getNome());
+            obj.setEmail(retorno.get().getEmail());
+            obj.setIdcliente(retorno.get().getIdcliente());
         }
-        return dto;    
+        return obj;    
     }
+
 }
