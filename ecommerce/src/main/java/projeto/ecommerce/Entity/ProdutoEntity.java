@@ -17,6 +17,7 @@ public class ProdutoEntity {
     private String categoria;
     private float valor;
     private int quantidade;
+    private String url;
 
     public String getCategoria() {
         return categoria;
@@ -53,5 +54,11 @@ public class ProdutoEntity {
     }
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+    public String getUrl() {
+        return url;
+    }
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

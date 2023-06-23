@@ -7,6 +7,7 @@ public class Produto {
     private String categoria;
     private float valor;
     private int quantidade;
+    private String url;
 
     public int getIdproduto() {
         return idproduto;
@@ -44,4 +45,10 @@ public class Produto {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+    public String getUrl() {
+        return url;
+    }
+    public void setUrl(String url) {
+        this.url = url;
+    }    
 }

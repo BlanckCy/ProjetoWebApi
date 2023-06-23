@@ -23,6 +23,7 @@ public class ProdutoService {
         entity.setCategoria(dto.getCategoria());
         entity.setQuantidade(dto.getQuantidade());
         entity.setValor(dto.getValor());
+        entity.setUrl(dto.getUrl());
         repository.save(entity);
 
         return "ok";
@@ -34,6 +35,8 @@ public class ProdutoService {
         entity.setIdproduto(dto.getIdproduto());
         entity.setNome(dto.getNome());
         entity.setDescricao(dto.getDescricao());
+        entity.setValor(dto.getValor());
+        entity.setUrl(dto.getUrl());
         repository.save(entity);
 
         return "ok";
@@ -54,9 +57,10 @@ public class ProdutoService {
         Optional<ProdutoEntity> retorno = repository.findById(idproduto);
         if(retorno.isPresent()){
             dto.setIdproduto(retorno.get().getIdproduto());
-            dto.setDescricao(retorno.get().getDescricao());
             dto.setNome(retorno.get().getNome());
-   
+            dto.setDescricao(retorno.get().getDescricao());
+            dto.setValor(retorno.get().getValor());
+            dto.setUrl(retorno.get().getUrl());   
         }
         return dto;
     }
