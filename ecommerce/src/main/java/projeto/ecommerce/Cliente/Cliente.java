@@ -5,13 +5,15 @@ public class Cliente {
     private String nome;
     private String email;
     private String senha;
-
-    public String getSenha() {
-        return senha;
+    private String sobrenome;
+    private String telefone;
+    
+    public int getIdcliente() {
+        return idcliente;
     }
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }    
+    public void setIdcliente(int idcliente) {
+        this.idcliente = idcliente;
+    }
     public String getNome() {
         return nome;
     }
@@ -24,10 +26,22 @@ public class Cliente {
     public void setEmail(String email) {
         this.email = email;
     }
-    public int getIdcliente() {
-        return idcliente;
+    public String getSenha() {
+        return senha;
     }
-    public void setIdcliente(int idcliente) {
-        this.idcliente = idcliente;
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+    public String getSobrenome() {
+        return sobrenome;
+    }
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
+    public String getTelefone() {
+        return telefone;
+    }
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }    
 }

@@ -53,6 +53,8 @@ public class ClienteService {
             obj.setNome(retorno.get().getNome());
             obj.setEmail(retorno.get().getEmail());
             obj.setIdcliente(retorno.get().getIdcliente());
+            obj.setSobrenome(retorno.get().getSobrenome());
+            obj.setTelefone(retorno.get().getTelefone());
         }
         return obj;    
     }
